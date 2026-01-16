@@ -9,8 +9,11 @@
 
 <!-- ===================== NAVBAR ===================== -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-secondary px-4">
-    <a class="navbar-brand fw-bold" href="./assets/img/logo_blanco.svg">
-        CotiEventos
+    <a class="navbar-brand fw-bold" href="">
+       <img src="./assets/img/logo_blanco.svg"
+                    alt="CotiEventos"
+                    class="me-2"
+                    style="height: 45px;">
         <small class="d-block fw-light fs-6">Tu evento en un Click</small>
     </a>
 

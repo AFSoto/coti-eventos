@@ -78,5 +78,12 @@
                 alt="Quiénes somos">
         </div>
     </div>
+    <div class="text-center mt-4">
+    <a href="<?= BASE_URL ?>module=eventos&view=listar"
+       class="btn btn-secondary btn-lg rounded-pill px-5">
+        Empezar a cotizar tu evento
+    </a>
+</div>
+
     
 </div>

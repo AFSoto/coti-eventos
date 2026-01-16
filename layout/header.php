@@ -29,7 +29,7 @@
                     style="height: 45px;">
 
                 <div class="d-flex flex-column lh-1">
-                    <span class="fw-bold" style="font-size: 1.2rem;">CotiEventos</span>
+                    <span class="fw-bold" style="font-size: 1.2rem;"></span>
                     <small class="text-white-50">Tu evento en un Click</small>
                 </div>
             </a>
@@ -63,42 +63,9 @@
 
                     <!-- mi cuenta -->
                     <a href="<?= BASE_URL ?>module=usuarios&view=login" class="text-white text-decoration-none me-3 d-flex align-items-center">
-    
-    <span class="ms-1">
-        <?php if (isset($_SESSION['nombre'])): ?>
-    <div class="dropdown">
-        <a href="#" class="text-white text-decoration-none me-3 d-flex align-items-center dropdown-toggle" 
-           data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="bi bi-person-circle fs-4"></i>
-            <span class="ms-1">
-                <?php 
-                    $nombre = $_SESSION['nombre'];
-                    echo (strlen($nombre) > 12) ? mb_substr($nombre, 0, 10) . '..' : $nombre;
-                ?>
-            </span>
-        </a>
-        <ul class="dropdown-menu dropdown-menu-end shadow">
-            <li>
-                <a class="dropdown-item" href="<?= BASE_URL ?>module=usuarios&view=perfil">
-                    <i class="bi bi-person me-2"></i>Ver Perfil
-                </a>
-            </li>
-            <li><hr class="dropdown-divider"></li>
-            <li>
-                <a class="dropdown-item text-danger" href="<?= BASE_URL ?>module=usuarios&action=logout">
-                    <i class="bi bi-box-arrow-right me-2"></i>Cerrar Sesión
-                </a>
-            </li>
-        </ul>
-    </div>
-<?php else: ?>
-    <a href="<?= BASE_URL ?>module=usuarios&view=login" class="text-white text-decoration-none me-3 d-flex align-items-center">
-        <i class="bi bi-person-circle fs-4"></i>
-        <span class="ms-1">Mi Cuenta</span>
-    </a>
-<?php endif; ?>
-    </span>
-</a>
+                        <i class="bi bi-person-circle fs-4"></i>
+                        <span class="ms-1">Mi Cuenta</span>
+                    </a>
                     <!-- Carrito -->
                     <a href="#" class="text-white text-decoration-none me-3 d-flex align-items-center">
                         <i class="bi bi-cart fs-4"></i>

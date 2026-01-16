@@ -42,6 +42,8 @@ $action = $_GET['action'] ?? null;
 
 // Módulos (carpetas principales)
 $modulosPermitidos = [
+    'vestuarios',
+    'bodas',
     'admin',
     'home',
     'usuarios',
