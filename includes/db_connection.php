@@ -13,12 +13,12 @@ class Database
     private $connection;
     
     // Configuración de la base de datos
-    private $host = 'localhost';
-    private $database = 'coti_eventos';
-    private $username = 'root';
-    private $password = '1234567';
-    private $charset = 'utf8mb4';
-    private $port = '3307';
+    private $host = DB_HOST;
+    private $database = DB_NAME;
+    private $username = DB_USER;
+    private $password = DB_PASS;
+    private $charset = DB_CHARSET;
+    private $port = DB_PORT;
     
     /**
      * Constructor privado - Previene la creación directa de instancias

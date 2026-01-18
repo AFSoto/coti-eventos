@@ -3,11 +3,37 @@
 // CONFIGURACIÓN BÁSICA
 // =====================================================
 session_start();
+require_once 'vendor/autoload.php';
+use Dotenv\Dotenv;
+// Cargar variables de entorno
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
 require_once './includes/db_connection.php';
 require_once './includes/functions.php';
 require_once './includes/config.php';
 // require_once './helpers/auth.php';
+
+
+//detercar el rol del usuario para ver que header y footer cargar
+// Por defecto usamos el layout de cliente
+$headerPath = './layout/header.php';
+$footerPath = './layout/footer.php';
+
+// Si existe sesión y el rol es Administrador, cambiamos las rutas
+if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'Administrador') {
+    $headerPath = './views/admin/layout/header.php';
+    $footerPath = './views/admin/layout/footer.php';
+}
+
+// =====================================================
+// PARÁMETROS GET
+// =====================================================
+//
+$module = $_GET['module'] ?? 'home';
+$view   = $_GET['view']   ?? 'index';
+$action = $_GET['action'] ?? null;
+
 
 
 // =====================================================
@@ -16,6 +42,9 @@ require_once './includes/config.php';
 
 // Módulos (carpetas principales)
 $modulosPermitidos = [
+    'vestuarios',
+    'bodas',
+    'admin',
     'home',
     'usuarios',
     'lugares',
@@ -29,7 +58,7 @@ $modulosPermitidos = [
 
 // Acciones permitidas por módulo
 $accionesPermitidas = [
-    'usuarios' => ['crear', 'editar', 'eliminar'],
+    'usuarios' => ['crear', 'editar', 'eliminar','login','logout'],
     'lugares' => ['crear', 'editar', 'eliminar'],
     'eventos' => ['crear', 'editar', 'eliminar'],
     'cotizaciones' => ['crear', 'aprobar', 'rechazar', 'completar'],
@@ -39,21 +68,28 @@ $accionesPermitidas = [
     'sonido' => ['asignar']
 ];
 
+//cargamos las acciones aca para evitar que cuando vaya a una accion lleve el html del header
+if ($action) {
 
-// =====================================================
-// PARÁMETROS GET
-// =====================================================
+    if (
+        isset($accionesPermitidas[$module]) &&
+        in_array($action, $accionesPermitidas[$module])
+    ) {
 
-$module = $_GET['module'] ?? 'home';
-$view   = $_GET['view']   ?? 'index';
-$action = $_GET['action'] ?? null;
+        $actionFile = "./acciones/$module/$action.php";
 
+        if (file_exists($actionFile)) {
+            require $actionFile;
+            exit;
+        }
+    }
+}
 
 // =====================================================
 // HEADER
 // =====================================================
 
-require_once './layout/header.php';
+require_once  $headerPath;
 
 
 // =====================================================
@@ -85,24 +121,11 @@ if (in_array($module, $modulosPermitidos)) {
 // EJECUCIÓN DE ACCIONES (POST / lógica)
 // =====================================================
 
-if ($action) {
 
-    if (
-        isset($accionesPermitidas[$module]) &&
-        in_array($action, $accionesPermitidas[$module])
-    ) {
-
-        $actionFile = "./acciones/$module/$action.php";
-
-        if (file_exists($actionFile)) {
-            require $actionFile;
-        }
-    }
-}
 
 
 // =====================================================
 // FOOTER
 // =====================================================
 
-require_once './layout/footer.php';
+require_once $footerPath;

@@ -29,7 +29,7 @@
                     style="height: 45px;">
 
                 <div class="d-flex flex-column lh-1">
-                    <span class="fw-bold" style="font-size: 1.2rem;">CotiEventos</span>
+                    <span class="fw-bold" style="font-size: 1.2rem;"></span>
                     <small class="text-white-50">Tu evento en un Click</small>
                 </div>
             </a>
