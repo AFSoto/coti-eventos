@@ -1,14 +1,15 @@
-<main class="container my-5 flex-grow-1">
+<main class="container-fluid my-5 flex-grow-1">
 
     <div id="weddingCarousel" class="carousel slide mb-5 shadow" data-bs-ride="carousel">
         <div class="carousel-inner rounded-4">
             <div class="carousel-item active">
-                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&h=450" class="d-block w-100 object-fit-cover" style="max-height: 450px;" alt="Boda 1">
+                <img src="https://i.pinimg.com/736x/6e/d3/76/6ed37635050c84634fb1820e9c9ecf28.jpg" class="d-block w-100 object-fit-cover" style="max-height: 450px;" alt="Boda 1">
             </div>
             <div class="carousel-item">
-                <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&h=450" class="d-block w-100 object-fit-cover" style="max-height: 450px;" alt="Boda 2">
+                <img src="https://i.pinimg.com/736x/65/f9/07/65f907ad8aab4dc8835fb4ae113032d1.jpg" class="d-block w-100 object-fit-cover" style="max-height: 450px;" alt="Boda 2">
             </div>
-        </div>
+       
+
         <button class="carousel-control-prev" type="button" data-bs-target="#weddingCarousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         </button>
@@ -58,13 +59,7 @@
                     <i class="bi bi-chevron-right ms-auto text-muted small"></i>
                 </a>
 
-            </div>
-
-            <div class="d-flex justify-content-end mt-5">
-                <button class="btn btn-light border px-5 py-2 text-secondary shadow-sm rounded-3">
-                    siguiente
-                </button>
-            </div>
+            </div> 
         </div>
     </div>
 </main>

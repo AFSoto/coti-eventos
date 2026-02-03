@@ -2,6 +2,7 @@
 <!-- ===================== -->
 <!--  CARRUSEL SUPERIOR     -->
 <!-- ===================== -->
+ 
 <div id="carouselCoti" class="carousel slide" data-bs-ride="carousel" 
     style="height: 300px; overflow: hidden;">
 
@@ -16,14 +17,14 @@
     <div class="carousel-inner">
 
         <div class="carousel-item active">
-            <img src="https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=1600&q=80"
+            <img src="https://i.pinimg.com/736x/a7/95/cc/a795cc5d46bf0c993a47130f1f7bf717.jpg"
                 class="d-block w-100"
                 style="height: 300px; object-fit: cover;"
                 alt="evento 1">
         </div>
 
         <div class="carousel-item">
-            <img src="https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=1600&q=80"
+            <img src="https://i.pinimg.com/736x/35/01/87/350187d309653a9aeb88bf1bf00532e4.jpg"
                 class="d-block w-100"
                 style="height: 300px; object-fit: cover;"
                 alt="evento 2">
@@ -40,7 +41,7 @@
 
     <!-- Controles -->
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselCoti" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
+  <span class="carousel-control-prev-icon"></span>
     </button>
 
     <button class="carousel-control-next" type="button" data-bs-target="#carouselCoti" data-bs-slide="next">

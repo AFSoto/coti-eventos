@@ -36,70 +36,75 @@
 </div>
 
 <!-- ===================== TITULO ===================== -->
-<div class="container my-5 text-center">
-    <span class="bg-secondary text-white px-5 py-2 rounded-pill fs-4 fw-bold shadow">
-        Selecciona tu tipo de evento
-    </span>
-</div>
-
-<!-- ===================== TARJETAS ===================== -->
-<div class="container pb-5">
-    <div class="row g-4 text-center">
-
-        <div class="col-md-4">
-            <img src="https://i.pinimg.com/736x/ae/7a/99/ae7a9937c10a15589fc458600af4fe34.jpg"
-                 class="img-fluid rounded shadow-sm"
-                 style="height:230px; object-fit:cover;">
-            <button class="btn btn-secondary btn-lg w-100 mt-3 fw-bold shadow text-uppercase">
-                Graduaciones
-            </button>
-        </div>
-
-        <div class="col-md-4">
-            <img src="https://shower.center/en/tips/baby-shower/quick-and-easy-baby-shower-decorating/carousel-1/3-blue-Elephant-baby-shower-decoration.webp"
-                 class="img-fluid rounded shadow-sm"
-                 style="height:230px; object-fit:cover;">
-            <button class="btn btn-secondary btn-lg w-100 mt-3 fw-bold shadow text-uppercase">
-                Baby Showers
-            </button>
-        </div>
-
-        <div class="col-md-4">
-            <img src="https://www.evento.love/blog/wp-content/uploads/2021/11/eventolove-wedding-bodas-tartaspersonalizadas-babyshower-cumplean%CC%83os-primercumplean%CC%83os-comunion-bautizo-scaled.jpg"
-                 class="img-fluid rounded shadow-sm"
-                 style="height:230px; object-fit:cover;">
-            <button class="btn btn-secondary btn-lg w-100 mt-3 fw-bold shadow text-uppercase">
-                Bautizos
-            </button>
-        </div>
-
-        <div class="col-md-4">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8Noq6s1ZgGMg4ByW8izNok_qiuKMkTa0Rsw&s"
-                 class="img-fluid rounded shadow-sm"
-                 style="height:230px; object-fit:cover;">
-            <button class="btn btn-secondary btn-lg w-100 mt-3 fw-bold shadow text-uppercase">
-                Cumpleaños
-            </button>
-        </div>
-
-        <div class="col-md-4">
-            <img src="https://cdn0.bodas.net/article-vendor/45446/3_2/960/jpg/ec-228_1_45446-168966401847248.jpeg"
-                 class="img-fluid rounded shadow-sm"
-                 style="height:230px; object-fit:cover;">
-                 <a href="<?= BASE_URL ?>module=bodas&view=principal"><button class="btn btn-secondary btn-lg w-100 mt-3 fw-bold shadow text-uppercase">
-                Matrimonios
-            </button></a>
-            
-        </div>
-
-        <div class="col-md-4">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeA5axJdYAcGpbCCGTMXukL-0uxhOOjht9uw&s"
-                 class="img-fluid rounded shadow-sm"
-                 style="height:230px; object-fit:cover;">
-            <button class="btn btn-secondary btn-lg w-100 mt-3 fw-bold shadow text-uppercase">
-                XV Años
-            </button>
-        </div>
-
+<div class="container text-center mb-5">
+        <h2 class="fw-bold text-uppercase">
+            Selecciona el tipo de evento
+        </h2>
     </div>
-</div>
+
+    <div class="container pb-5">
+        <div class="row g-4"> <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-sm rounded-0">
+                    <img src="https://www.decoracionfiestas.es/wp-content/uploads/globos-1.jpg"
+                         class="card-img-top rounded-0" style="height:250px; object-fit:cover;">
+                    <button class="btn btn-secondary w-100 fw-bold py-3 text-uppercase rounded-0 border-0">
+                        Graduaciones
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-sm rounded-0">
+                    <img src="https://shower.center/en/tips/baby-shower/quick-and-easy-baby-shower-decorating/carousel-1/3-blue-Elephant-baby-shower-decoration.webp"
+                         class="card-img-top rounded-0" style="height:250px; object-fit:cover;">
+                    <button class="btn btn-secondary w-100 fw-bold py-3 text-uppercase rounded-0 border-0">
+                        Baby Showers
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-sm rounded-0">
+                    <img src="https://www.evento.love/blog/wp-content/uploads/2021/11/eventolove-wedding-bodas-tartaspersonalizadas-babyshower-cumplean%CC%83os-primercumplean%CC%83os-comunion-bautizo-scaled.jpg"
+                         class="card-img-top rounded-0" style="height:250px; object-fit:cover;">
+                    <button class="btn btn-secondary w-100 fw-bold py-3 text-uppercase rounded-0 border-0">
+                        Bautizos
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-sm rounded-0">
+                    <img src="https://mamasviajeras.com/wp-content/uploads/2020/07/celavi.2.jpg"
+                         class="card-img-top rounded-0" style="height:250px; object-fit:cover;">
+                    <button class="btn btn-secondary w-100 fw-bold py-3 text-uppercase rounded-0 border-0">
+                        Cumpleaños
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-sm rounded-0">
+                    <img src="https://cdn0.bodas.net/article-vendor/45446/3_2/960/jpg/ec-228_1_45446-168966401847248.jpeg"
+                         class="card-img-top rounded-0" style="height:250px; object-fit:cover;">
+                    <a href="<?= BASE_URL ?>module=bodas&view=principal" class="btn btn-secondary w-100 fw-bold py-3 text-uppercase rounded-0 border-0 text-decoration-none text-center">
+                        Matrimonios
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-sm rounded-0">
+                    <img src="https://i.pinimg.com/originals/70/38/22/703822bb947dfc5a966d0bf5b41d3028.jpg"
+                         class="card-img-top rounded-0" style="height:250px; object-fit:cover;">
+                    <button class="btn btn-secondary w-100 fw-bold py-3 text-uppercase rounded-0 border-0">
+                        XV Años
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
