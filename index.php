@@ -3,6 +3,7 @@
 // CONFIGURACIÓN BÁSICA
 // =====================================================
 session_start();
+
 require_once 'vendor/autoload.php';
 use Dotenv\Dotenv;
 // Cargar variables de entorno
@@ -14,6 +15,21 @@ require_once './includes/functions.php';
 require_once './includes/config.php';
 // require_once './helpers/auth.php';
 
+//  llamamos a la clase de la libreria de google que descargaamos para poder 
+// llenar los datos que necesitamos para redirigir a los servidores de google
+// y lo llamamos aca en el index por que estamos usando un modal para el inicio de sesion
+
+$client = new Google_Client();
+$client->setClientId($_ENV['GOOGLE_CLIENT_ID']);
+$client->setClientSecret($_ENV['GOOGLE_CLIENT_SECRET']);
+$client->setRedirectUri($_ENV['GOOGLE_REDIRECT_URL']);
+$client->addScope("email");
+$client->addScope("profile");
+
+
+
+// Generamos la URL para el botón
+$url_google = $client->createAuthUrl();
 
 //detercar el rol del usuario para ver que header y footer cargar
 // Por defecto usamos el layout de cliente
@@ -62,7 +78,7 @@ $modulosPermitidos = [
 
 // Acciones permitidas por módulo
 $accionesPermitidas = [
-    'usuarios' => ['crear', 'editar', 'eliminar','login','logout'],
+    'usuarios' => ['crear', 'editar', 'eliminar','login','logout','callback'],
     'lugares' => ['crear', 'editar', 'eliminar'],
     'eventos' => ['crear', 'editar', 'eliminar'],
     'cotizaciones' => ['crear', 'aprobar', 'rechazar', 'completar'],

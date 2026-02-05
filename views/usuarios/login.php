@@ -43,11 +43,12 @@ Crear tu cuenta
 </a>
 
 <!-- Google -->
-<button class="btn btn-light w-100 mb-3 d-flex align-items-center justify-content-center border rounded-pill py-2 fs-6">
-<img src="./assets/img/logo_google.png"
-alt="Google" width="24" class="me-2">
-Iniciar sesión con Google
-</button>
+<a href="<?= $url_google ?>"
+   class="btn btn-light w-100 mb-3 d-flex align-items-center justify-content-center border rounded-pill py-2 fs-6">
+    <img src="./assets/img/logo_google.png"
+         alt="Google" width="24" class="me-2">
+    Iniciar sesión con Google
+</a>
 
 <!-- Facebook -->
 <button class="btn btn-light w-100 mb-3 d-flex align-items-center justify-content-center border rounded-pill py-2 fs-6">
