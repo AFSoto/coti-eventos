@@ -20,11 +20,11 @@ require_once './includes/config.php';
 $headerPath = './layout/header.php';
 $footerPath = './layout/footer.php';
 
-// Si existe sesión y el rol es Administrador, cambiamos las rutas
-if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'Administrador') {
-    $headerPath = './views/admin/layout/header.php';
-    $footerPath = './views/admin/layout/footer.php';
-}
+// 1. Detección de Rol y Configuración de Layout
+$isAdmin = (isset($_SESSION['rol']) && $_SESSION['rol'] === 'Administrador');
+
+$headerPath = $isAdmin ? './views/admin/layout/header.php' : './layout/header.php';
+$footerPath = $isAdmin ? './views/admin/layout/footer.php' : './layout/footer.php';
 
 // =====================================================
 // PARÁMETROS GET
@@ -97,33 +97,35 @@ require_once  $headerPath;
 // =====================================================
 // CARGA DE VISTAS
 // =====================================================
+// Contenedor principal: d-flex solo si es admin para poner el sidebar al lado
+echo '<div class="' . ($isAdmin ? 'd-flex flex-grow-1' : '') . '">';
 
-if (in_array($module, $modulosPermitidos)) {
-
-    // Ruta de la vista
-    $viewFile = "./views/$module/$view.php";
-
-    // Caso especial: home y login no están en subcarpetas
-    // if (in_array($module, ['home', 'login'])) {
-    //     $viewFile = "./views/$module.php";
-    // }
-
-    if (file_exists($viewFile)) {
-        require $viewFile;
-    } else {
-        require './views/404.php';
+    // SIDEBAR (Solo Admin)
+    if ($isAdmin) {
+        $sidebarPath = './views/admin/layout/sidebar.php';
+        if (file_exists($sidebarPath)) {
+            echo '<aside class="bg-dark border-end d-none d-md-block" style="min-width: 250px;">';
+                require_once $sidebarPath;
+            echo '</aside>';
+        }
     }
 
-} else {
-    require './views/404.php';
-}
+    // CONTENIDO DINÁMICO
+    // Si es admin, le damos padding y crecimiento. Si es cliente, queda limpio.
+    echo '<main class="' . ($isAdmin ? 'flex-grow-1 p-4' : 'w-100') . '">';
+        if (in_array($module, $modulosPermitidos)) {
+            $viewFile = "./views/$module/$view.php";
+            if (file_exists($viewFile)) {
+                require $viewFile;
+            } else {
+                require './views/404.php';
+            }
+        } else {
+            require './views/404.php';
+        }
+    echo '</main>';
 
-
-// =====================================================
-// EJECUCIÓN DE ACCIONES (POST / lógica)
-// =====================================================
-
-
+echo '</div>'; // Fin del contenedor (d-flex o div normal)
 
 
 // =====================================================
