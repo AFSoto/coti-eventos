@@ -12,4 +12,11 @@ define('DB_PORT', $_ENV['DB_PORT']);
 define('DB_CHARSET', $_ENV['DB_CHARSET']);
 
 
+// constantes para login de google 
+define("GOOGLE_CLIENT_ID",$_ENV['GOOGLE_CLIENT_ID']);
+define("GOOGLE_CLIENT_SECRET",$_ENV['GOOGLE_CLIENT_SECRET']);
+define("GOOGLE_REDIRECT_URL",$_ENV['GOOGLE_REDIRECT_URL']);
+
+
+
 ?>

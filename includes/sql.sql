@@ -15,13 +15,14 @@ abreviatura VARCHAR(10) UNIQUE
 CREATE TABLE usuarios (
 id_usuario INT PRIMARY KEY AUTO_INCREMENT UNIQUE NOT NULL,
 nombre VARCHAR(255) NOT NULL,
+id_google VARCHAR(255) UNIQUE NULL,
 email VARCHAR(255) UNIQUE NOT NULL,
-password VARCHAR(255) NOT NULL, 
+password VARCHAR(255)  NULL, 
 telefono_fijo VARCHAR(20),      -- Nuevo campo
 telefono_movil VARCHAR(20),     -- Nuevo campo
 direccion VARCHAR(255),
-documento VARCHAR(50) UNIQUE NOT NULL, -- Nuevo campo
-id_tipo_documento INT NOT NULL,        -- Clave foránea para el tipo de documento
+documento VARCHAR(50) UNIQUE  NULL, -- Nuevo campo
+id_tipo_documento INT  NULL,      -- Clave foránea para el tipo de documento
 id_rol INT,
 FOREIGN KEY (id_rol) REFERENCES roles(id_rol),
 FOREIGN KEY (id_tipo_documento) REFERENCES tipo_documento(id_tipo_documento) -- Nueva clave foránea
