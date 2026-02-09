@@ -1,4 +1,4 @@
-<aside class="d-flex flex-column p-3 text-white bg-dark border-end" style="width: 250px; min-height: 100vh;">
+<aside class="d-flex flex-column p-3 text-white border-end" style="width: 250px; min-height: 100vh;">
     <ul class="list-group list-group-flush">
         <a href="<?= BASE_URL ?>admin/cotizaciones" class="list-group-item bg-transparent border-0">
             📄 Cotizaciones

@@ -123,75 +123,66 @@ if ($action) {
 // =====================================================
 // HEADER
 // =====================================================
-
+// =====================================================
 require_once  $headerPath;
-
 
 // =====================================================
 // CARGA DE VISTAS
 // =====================================================
-// Contenedor principal: d-flex solo si es admin para poner el sidebar al lado
-echo '<div class="' . ($isAdmin ? 'd-flex flex-grow-1' : '') . '">';
 
+// Le damos una altura fija al contenedor para que el scroll funcione adentro
+// Este div principal establece la altura disponible (100% del viewport menos 80px del header)
+// y oculta cualquier overflow para controlar exactamente dónde aparece el scroll
+echo '<div class="' . ($isAdmin ? 'd-flex' : '') . '" style="height: calc(100vh - 80px); overflow: hidden;">';
 
 // SIDEBAR (Solo Admin)
+// Este bloque renderiza la barra lateral solo si el usuario es administrador
 if ($isAdmin) {
     $sidebarPath = './views/admin/layout/sidebar.php';
     if (file_exists($sidebarPath)) {
-        echo '<aside class="bg-dark border-end d-none d-md-block" style="min-width: 250px;">';
+        // <aside>: elemento semántico HTML5 para contenido lateral complementario
+        // border-end: añade un borde en el lado derecho del sidebar
+        // d-none d-md-block: oculta el sidebar en pantallas pequeñas (mobile) y lo muestra desde tablets en adelante
+        // shadow-sm: añade una sombra sutil para dar profundidad visual
+        // min-width: 250px: establece un ancho mínimo fijo para el sidebar
+        // flex-shrink: 0: evita que el sidebar se comprima cuando el contenido principal crece
+        echo '<aside class="border-end d-none d-md-block shadow-sm" style="min-width: 250px; flex-shrink: 0;">';
         require_once $sidebarPath;
         echo '</aside>';
     }
 }
 
 // CONTENIDO DINÁMICO
-// Si es admin, le damos padding y crecimiento. Si es cliente, queda limpio.
-echo '<main class="' . ($isAdmin ? 'flex-grow-1 p-4' : 'w-100') . '">';
+// Este <main> contiene el contenido principal de la página
+// overflow-y-auto: permite el scroll vertical solo en esta sección, manteniendo el header y sidebar fijos
+// Si es admin: flex-grow-1 hace que ocupe todo el espacio restante después del sidebar, p-4 añade padding
+// Si no es admin: w-100 hace que ocupe el 100% del ancho disponible
+echo '<main class="' . ($isAdmin ? 'flex-grow-1 p-4' : 'w-100') . '" style="overflow-y: auto;">';
+
+// Validación de seguridad: verifica que el módulo solicitado esté en la lista de módulos permitidos
 if (in_array($module, $modulosPermitidos)) {
+    // Construye la ruta del archivo de vista dinámicamente basado en el módulo y la vista solicitados
     $viewFile = "./views/$module/$view.php";
+    
+    // Verifica que el archivo exista físicamente antes de cargarlo
     if (file_exists($viewFile)) {
-        require $viewFile;
+        require $viewFile; // Carga la vista solicitada
     } else {
-        require './views/404.php';
+        require './views/404.php'; // Si el archivo no existe, muestra página de error 404
     }
 } else {
+    // Si el módulo no está permitido, muestra página de error 404 por seguridad
     require './views/404.php';
 }
-echo '</main>';
 
+echo '</main>'; // Cierra el contenedor principal
 
-// if (in_array($module, $modulosPermitidos)) {
-
-// Ruta de la vista
-// $viewFile = "./views/$module/$view.php";
-
-// Caso especial: home y login no están en subcarpetas
-// if (in_array($module, ['home', 'login'])) {
-//     $viewFile = "./views/$module.php";
-// }
-
-// if (file_exists($viewFile)) {
-// require $viewFile;
-// } else {
-// require './views/404.php';
-// }
-
-// } else {
-// require './views/404.php';
-// }
-
-
+echo '</div>'; // Fin del contenedor flex principal
 // =====================================================
 // EJECUCIÓN DE ACCIONES (POST / lógica)
 // =====================================================
 
-
-
-echo '</div>'; // Fin del contenedor (d-flex o div normal)
-
-
 // =====================================================
 // FOOTER
 // =====================================================
-
 require_once $footerPath;
