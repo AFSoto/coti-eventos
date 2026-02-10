@@ -1,4 +1,3 @@
-
 <!-- ===================== CARRUSEL ===================== -->
 <div id="carouselEventos" class="carousel slide" data-bs-ride="carousel">
 
@@ -58,7 +57,7 @@ Graduaciones </a>
 <div class="card border-0 shadow-sm rounded-0">
 <img src="https://shower.center/en/tips/baby-shower/quick-and-easy-baby-shower-decorating/carousel-1/3-blue-Elephant-baby-shower-decoration.webp"
 class="card-img-top rounded-0" style="height:250px; object-fit:cover;">
-<a href="<?= BASE_URL ?>module=baby_shawers&view=principal" class="btn btn-secondary w-100 fw-bold py-3 text-uppercase rounded-0 border-0 text-decoration-none text-center">
+<a href="<?= BASE_URL ?>module=baby_showers&view=principal" class="btn btn-secondary w-100 fw-bold py-3 text-uppercase rounded-0 border-0 text-decoration-none text-center">
 Baby Showers </a>
 </div>
 </div>
@@ -76,7 +75,7 @@ Bautizos </a>
 <div class="card border-0 shadow-sm rounded-0">
 <img src="https://mamasviajeras.com/wp-content/uploads/2020/07/celavi.2.jpg"
 class="card-img-top rounded-0" style="height:250px; object-fit:cover;">
-<a href="<?= BASE_URL ?>module=cumpleaños&view=principal" class="btn btn-secondary w-100 fw-bold py-3 text-uppercase rounded-0 border-0 text-decoration-none text-center">
+<a href="<?= BASE_URL ?>module=cumple&view=principal" class="btn btn-secondary w-100 fw-bold py-3 text-uppercase rounded-0 border-0 text-decoration-none text-center">
 Cumpleaños </a>
 </div>
 </div>
@@ -94,7 +93,7 @@ Matrimonios </a>
 <div class="card border-0 shadow-sm rounded-0">
 <img src="https://i.pinimg.com/originals/70/38/22/703822bb947dfc5a966d0bf5b41d3028.jpg"
 class="card-img-top rounded-0" style="height:250px; object-fit:cover;">
-<a href="<?= BASE_URL ?>module=xv_años&view=principal" class="btn btn-secondary w-100 fw-bold py-3 text-uppercase rounded-0 border-0 text-decoration-none text-center">
+<a href="<?= BASE_URL ?>module=xv&view=principal" class="btn btn-secondary w-100 fw-bold py-3 text-uppercase rounded-0 border-0 text-decoration-none text-center">
 XV Años </a>
 </div>
 </div>
