@@ -29,7 +29,7 @@
         </div>
 
         <div class="col-lg-7">
-            <h1 class="display-4 fw-light mb-5">Baby shawers</h1>
+            <h1 class="display-4 fw-light mb-5">Baby showers</h1>
 <p class="lead text-dark fs-4">Tu baby shower merece mucho más que una celebración: merece convertirse en un recuerdo lleno de ternura y amor.
 Nos alejamos de lo convencional para crear una atmósfera dulce y única, donde cada detalle refleja la emoción de la nueva vida que está por llegar,
 capturando sonrisas, abrazos y momentos que transforman este encuentro especial en el comienzo más hermoso de su historia en familia.</p>
@@ -37,7 +37,7 @@ capturando sonrisas, abrazos y momentos que transforman este encuentro especial 
 
             <div class="list-group list-group-flush">
                 
-                <a href="<?= BASE_URL ?>module=vestidos&view=listar_baby_shawers" class="list-group-item list-group-item-action border-0 bg-transparent px-0 py-3 d-flex align-items-center">
+                <a href="<?= BASE_URL ?>module=vestidos&view=listar_baby_showers" class="list-group-item list-group-item-action border-0 bg-transparent px-0 py-3 d-flex align-items-center">
                     <i class="bi bi-star-fill me-3 text-secondary p-2 bg-light rounded-circle shadow-sm"></i>
                     <span class="fs-5 fw-normal text-dark">vestuarios</span>
                     <i class="bi bi-chevron-right ms-auto text-muted small"></i>

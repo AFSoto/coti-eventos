@@ -62,6 +62,9 @@ $modulosPermitidos = [
     'vestuarios',
     'bodas',
     'admin',
+    'dashboard',
+     'reporte',
+     'configuracion',
     'home',
     'usuarios',
     'lugares',
@@ -74,17 +77,17 @@ $modulosPermitidos = [
     'postres',
     'tortas',
     'menu',
-    'cumpleaños',
-    'xv_años',
+    'cumple',
+    'xv',
     'bautizos',
-    'baby_shawers',
+    'baby_showers',
     'graduaciones',
     'sonido'
 ];
 
 // Acciones permitidas por módulo
 $accionesPermitidas = [
-    'usuarios' => ['crear', 'editar', 'eliminar', 'login', 'logout', 'callback'],
+    'usuarios' => ['crear', 'editar', 'eliminar', 'login', 'logout', 'callback','listar'],
     'lugares' => ['crear', 'editar', 'eliminar'],
     'eventos' => ['crear', 'editar', 'eliminar'],
     'cotizaciones' => ['crear', 'aprobar', 'rechazar', 'completar'],
@@ -95,10 +98,10 @@ $accionesPermitidas = [
     'postres' => ['asignar'],
     'tortas' => ['asignar'],
     'menu' => ['asignar'],
-    'cumpleaños' => ['asignar'],
-    'xv_años' => ['asignar'],
+    'cumple' => ['asignar'],
+    'xv' => ['asignar'],
     'bautizos' => ['asignar'],
-    'baby_shawers' => ['asignar'],
+    'baby_showers' => ['asignar'],
     'graduaciones' => ['asignar'],
     'sonido' => ['asignar']
 ];
@@ -133,11 +136,13 @@ require_once  $headerPath;
 // Le damos una altura fija al contenedor para que el scroll funcione adentro
 // Este div principal establece la altura disponible (100% del viewport menos 80px del header)
 // y oculta cualquier overflow para controlar exactamente dónde aparece el scroll
-if ($isAdmin) {
-    echo '<div class="d-flex" style="height: calc(100vh - 80px); overflow: hidden;">';
+if($isAdmin){
+echo '<div class="d-flex" style="height: calc(100vh - 80px); overflow: hidden;">';
 } else {
-    echo '<div>'; // frontend libre, sin altura fija
+echo '<div>';
 }
+
+
 // SIDEBAR (Solo Admin)
 // Este bloque renderiza la barra lateral solo si el usuario es administrador
 if ($isAdmin) {
@@ -167,17 +172,23 @@ if ($isAdmin) {
 }
 // Validación de seguridad: verifica que el módulo solicitado esté en la lista de módulos permitidos
 if (in_array($module, $modulosPermitidos)) {
-    // Construye la ruta del archivo de vista dinámicamente basado en el módulo y la vista solicitados
-    $viewFile = "./views/$module/$view.php";
-    
-    // Verifica que el archivo exista físicamente antes de cargarlo
-    if (file_exists($viewFile)) {
-        require $viewFile; // Carga la vista solicitada
+
+    // Construye la ruta según si es admin o no
+    if ($isAdmin) {
+        $viewFile = "./views/admin/$module/$view.php";
     } else {
-        require './views/404.php'; // Si el archivo no existe, muestra página de error 404
+        $viewFile = "./views/$module/$view.php";
     }
+
+    // Verifica que el archivo exista antes de cargarlo
+    if (file_exists($viewFile)) {
+        require $viewFile;
+    } else {
+        require './views/404.php';
+    }
+
 } else {
-    // Si el módulo no está permitido, muestra página de error 404 por seguridad
+    // Módulo no permitido → 404
     require './views/404.php';
 }
 
