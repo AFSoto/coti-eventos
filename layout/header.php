@@ -69,16 +69,19 @@
 
         <i class="bi bi-person-circle fs-4"></i>
 
+
         <?php if (isset($_SESSION['user_id'])): ?>
             <span class="ms-1"><?= htmlspecialchars($_SESSION['nombre']) ?></span>
         <?php else: ?>
             <span class="ms-1">Mi Cuenta</span>
         <?php endif; ?>
+
+       
     </a>
 
     <ul class="dropdown-menu dropdown-menu-end">
 
-        <?php if (!isset($_SESSION['user_id'])): ?>
+        <?php if (!isset($_SESSION['user'])): ?>
             <li>
                 <a class="dropdown-item" href="<?= BASE_URL ?>module=usuarios&view=login">
                     Iniciar sesión
@@ -118,3 +121,4 @@
             </div>
         </div>
     </nav>
+    

@@ -7,7 +7,6 @@
 </head>
 <body class="bg-light">
 
-<!-- ===================== NAVBAR ===================== -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-secondary px-4">
     <a class="navbar-brand fw-bold" href="">
        <img src="./assets/img/logo_blanco.svg"
@@ -31,33 +30,5 @@
     </div>
 </nav>
 
-<!-- ===================== LAYOUT ===================== -->
 <div class="container-fluid">
     <div class="row">
-
-        <!-- ===== SIDEBAR ===== -->
-        <aside class="col-12 col-md-3 col-lg-2 bg-secondary bg-opacity-25 vh-100 p-3">
-            <ul class="list-group list-group-flush">
-                <a href="<?= BASE_URL ?>admin/cotizaciones" class="list-group-item bg-transparent border-0">
-                    📄 Cotizaciones
-                </a>
-                <a href="<?= BASE_URL ?>admin/usuarios" class="list-group-item bg-transparent border-0">
-                    👤 Usuarios
-                </a>
-                <a href="<?= BASE_URL ?>admin/eventos" class="list-group-item bg-transparent border-0">
-                    📅 Eventos agendados
-                </a>
-                <a href="<?= BASE_URL ?>admin/productos" class="list-group-item bg-transparent border-0">
-                    🛒 Productos / servicios
-                </a>
-                <a href="<?= BASE_URL ?>admin/reportes" class="list-group-item bg-transparent border-0">
-                    📊 Reportes
-                </a>
-                <a href="<?= BASE_URL ?>admin/configuracion" class="list-group-item bg-transparent border-0">
-                    ⚙️ Configuración
-                </a>
-            </ul>
-        </aside>
-
-        <!-- ===== CONTENIDO DINÁMICO ===== -->
-        <main class="col-12 col-md-9 col-lg-10 p-5 bg-white">

@@ -5,6 +5,7 @@
 session_start();
 
 require_once 'vendor/autoload.php';
+
 use Dotenv\Dotenv;
 // Cargar variables de entorno
 $dotenv = Dotenv::createImmutable(__DIR__);
@@ -38,11 +39,11 @@ $url_google = $client->createAuthUrl();
 $headerPath = './layout/header.php';
 $footerPath = './layout/footer.php';
 
-// Si existe sesión y el rol es Administrador, cambiamos las rutas
-if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'Administrador') {
-    $headerPath = './views/admin/layout/header.php';
-    $footerPath = './views/admin/layout/footer.php';
-}
+// 1. Detección de Rol y Configuración de Layout
+$isAdmin = (isset($_SESSION['rol']) && $_SESSION['rol'] === 'Administrador');
+
+$headerPath = $isAdmin ? './views/admin/layout/header.php' : './layout/header.php';
+$footerPath = $isAdmin ? './views/admin/layout/footer.php' : './layout/footer.php';
 
 // =====================================================
 // PARÁMETROS GET
@@ -75,13 +76,18 @@ $modulosPermitidos = [
     'postres',
     'tortas',
     'menu',
-    'sonido',
     'album',
+    'cumpleaños',
+    'xv_años',
+    'bautizos',
+    'baby_shawers',
+    'graduaciones',
+    'sonido'
 ];
 
 // Acciones permitidas por módulo
 $accionesPermitidas = [
-    'usuarios' => ['crear', 'editar', 'eliminar','login','logout','callback'],
+    'usuarios' => ['crear', 'editar', 'eliminar', 'login', 'logout', 'callback'],
     'lugares' => ['crear', 'editar', 'eliminar'],
     'eventos' => ['crear', 'editar', 'eliminar'],
     'cotizaciones' => ['crear', 'aprobar', 'rechazar', 'completar'],
@@ -92,8 +98,13 @@ $accionesPermitidas = [
     'postres' => ['asignar'],
     'tortas' => ['asignar'],
     'menu' => ['asignar'],
-    'sonido' => ['asignar'],
     'album' => ['asignar'],
+    'cumpleaños' => ['asignar'],
+    'xv_años' => ['asignar'],
+    'bautizos' => ['asignar'],
+    'baby_shawers' => ['asignar'],
+    'graduaciones' => ['asignar'],
+    'sonido' => ['asignar']
 ];
 
 //cargamos las acciones aca para evitar que cuando vaya a una accion lleve el html del header
@@ -116,44 +127,66 @@ if ($action) {
 // =====================================================
 // HEADER
 // =====================================================
-
+// =====================================================
 require_once  $headerPath;
-
 
 // =====================================================
 // CARGA DE VISTAS
 // =====================================================
 
-if (in_array($module, $modulosPermitidos)) {
+// Le damos una altura fija al contenedor para que el scroll funcione adentro
+// Este div principal establece la altura disponible (100% del viewport menos 80px del header)
+// y oculta cualquier overflow para controlar exactamente dónde aparece el scroll
+echo '<div class="' . ($isAdmin ? 'd-flex' : '') . '" style="height: calc(100vh - 80px); overflow: hidden;">';
 
-    // Ruta de la vista
-    $viewFile = "./views/$module/$view.php";
-
-    // Caso especial: home y login no están en subcarpetas
-    // if (in_array($module, ['home', 'login'])) {
-    //     $viewFile = "./views/$module.php";
-    // }
-
-    if (file_exists($viewFile)) {
-        require $viewFile;
-    } else {
-        require './views/404.php';
+// SIDEBAR (Solo Admin)
+// Este bloque renderiza la barra lateral solo si el usuario es administrador
+if ($isAdmin) {
+    $sidebarPath = './views/admin/layout/sidebar.php';
+    if (file_exists($sidebarPath)) {
+        // <aside>: elemento semántico HTML5 para contenido lateral complementario
+        // border-end: añade un borde en el lado derecho del sidebar
+        // d-none d-md-block: oculta el sidebar en pantallas pequeñas (mobile) y lo muestra desde tablets en adelante
+        // shadow-sm: añade una sombra sutil para dar profundidad visual
+        // min-width: 250px: establece un ancho mínimo fijo para el sidebar
+        // flex-shrink: 0: evita que el sidebar se comprima cuando el contenido principal crece
+        echo '<aside class="border-end d-none d-md-block shadow-sm" style="min-width: 250px; flex-shrink: 0;">';
+        require_once $sidebarPath;
+        echo '</aside>';
     }
+}
 
+// CONTENIDO DINÁMICO
+// Este <main> contiene el contenido principal de la página
+// overflow-y-auto: permite el scroll vertical solo en esta sección, manteniendo el header y sidebar fijos
+// Si es admin: flex-grow-1 hace que ocupe todo el espacio restante después del sidebar, p-4 añade padding
+// Si no es admin: w-100 hace que ocupe el 100% del ancho disponible
+echo '<main class="' . ($isAdmin ? 'flex-grow-1 p-4' : 'w-100') . '" style="overflow-y: auto;">';
+
+// Validación de seguridad: verifica que el módulo solicitado esté en la lista de módulos permitidos
+if (in_array($module, $modulosPermitidos)) {
+    // Construye la ruta del archivo de vista dinámicamente basado en el módulo y la vista solicitados
+    $viewFile = "./views/$module/$view.php";
+    
+    // Verifica que el archivo exista físicamente antes de cargarlo
+    if (file_exists($viewFile)) {
+        require $viewFile; // Carga la vista solicitada
+    } else {
+        require './views/404.php'; // Si el archivo no existe, muestra página de error 404
+    }
 } else {
+    // Si el módulo no está permitido, muestra página de error 404 por seguridad
     require './views/404.php';
 }
 
+echo '</main>'; // Cierra el contenedor principal
 
+echo '</div>'; // Fin del contenedor flex principal
 // =====================================================
 // EJECUCIÓN DE ACCIONES (POST / lógica)
 // =====================================================
 
-
-
-
 // =====================================================
 // FOOTER
 // =====================================================
-
 require_once $footerPath;
